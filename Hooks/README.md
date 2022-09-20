@@ -126,10 +126,36 @@ FancyInput = forwardRef(FancyInput);
 
 ## useLayoutEffect
 
+useLayoutEffect doesn’t really care whether the browser has painted the DOM changes or not. It triggers the function right after the DOM mutations are computed.
+
 ## useDebugValue
+
+useDebugValue can be used to display a label for custom hooks in React DevTools.
+
+For example, consider the useFriendStatus custom Hook described in “Building Your Own Hooks”:
 
 ## useDeferredValue
 
 ## useTransition
 
 ## useId
+
+useId is a hook for generating unique IDs that are stable across the server and client, while avoiding hydration mismatches.
+
+```typescript
+function NameFields() {
+  const id = useId();
+  return (
+    <div>
+      <label htmlFor={id + "-firstName"}>First Name</label>
+      <div>
+        <input id={id + "-firstName"} type="text" />
+      </div>
+      <label htmlFor={id + "-lastName"}>Last Name</label>
+      <div>
+        <input id={id + "-lastName"} type="text" />
+      </div>
+    </div>
+  );
+}
+```
